@@ -89,4 +89,22 @@ J.REPLRE=repl_breakRE/sum(repl_breakRE)   #REFERENCE RUN REAL REVENUE EXCPENDITU
 Q.INDERE=inde_breakRE/sum(inde_breakRE)   #INDEPENDENT RUN REAL REVENUE EXCPENDITURE
 stat_JSDRE=rbind(J.REPLRE,Q.INDERE)
 JSD_ASD_RE=suppressMessages(JSD(stat_JSDRE)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN 
-                 
+###############REAL CAPITAL EXPENDITURE(ALGORITHMIC STABILITY DIAGNOSTIC)######################################################### 
+J.REPLCE=repl_breakCE/sum(repl_breakCE) #REFERENCE RUN REAL CAPITAL EXCPENDITURE
+Q.INDECE=inde_breakCE/sum(inde_breakCE) #INDEPENDENT RUN REAL CAPITAL EXCPENDITURE
+stat_JSDCE=rbind(J.REPLCE,Q.INDECE)
+JSD_ASD_CE=suppressMessages(JSD(stat_JSDCE)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+###############REAL TOTAL EXPENDITURE(ALGORITHMIC STABILITY DIAGNOSTIC)#########################################################                 
+J.REPLTE=repl_breakTE/sum(repl_breakTE) #REFERENCE RUN REALTOTAL EXCPENDITURE
+Q.INDETE=inde_breakTE/sum(inde_breakTE) #INDEPENDENT RUN REAL TOTAL EXCPENDITURE
+stat_JSDTE=rbind(J.REPLTE,Q.INDETE)
+JSD_ASD_TE=suppressMessages(JSD(stat_JSDTE)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+#############################RESULTS FOR ALGORITHMIC STABILITY DIAGNOSTIC#######################################################
+#########REAL GDP(ASD)##########################################################################################################
+print(JSD_ASD_GDP)      #Table 2(Refer the main paper) adopted tolerance level 0.01
+#########REAL REVENUE EXPENDITURE(ASD)##########################################################################################
+print(JSD_ASD_RE)       #Table 2(Refer the main paper) adopted tolerance level 0.01 
+########REAL CAPITAL EXPENDITURE################################################################################################
+print(JSD_ASD_CE)       #Table 2(Refer the main paper) adopted tolerance level 0.01           
+########REAL TOTAL EXPENDITURE##################################################################################################
+ print(JSD_ASD_TE)      #Table 2(Refer the main paper) adopted tolerance level 0.01                 
