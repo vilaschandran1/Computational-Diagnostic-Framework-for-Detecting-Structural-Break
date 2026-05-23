@@ -55,15 +55,38 @@ print(repl_breakTE) #Figure 1(refer main paper)
 ####################################################################################################################################
 ######################################ALGORITHMIC STABILITY DIAGNOSTIC##############################################################
 #########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL GDP#############################################
-inde_GDP=meboot(GDP_REAL,reps = 999)  #independen run of algorithm GDP
+inde_GDP=meboot(GDP_REAL,reps = 999)  #independen run of algorithm for Real GDP
 inde_GDPENSE=inde_GDP$ensemble
 inde_za_gdp=apply(inde_GDPENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 inde_breakGDP=table(factor(inde_za_gdp,levels = ALL_INDICES))                 
 #########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL REVENUE EXPENDITURE###############################
-inde_RE=meboot(RE_REAL,reps = 999)   #independent run of algorithm revenue expenditure
+inde_RE=meboot(RE_REAL,reps = 999)   #independent run of algorithm real revenue expenditure
 inde_REENSE=inde_RE$ensemble
 inde_za_re=apply(inde_REENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C  
 inde_breakRE=table(factor(inde_za_re,levels = ALL_INDICES))
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL REVENUE EXPENDITURE###############################                 
+#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL CAPITAL EXPENDITURE###############################
+inde_CE=meboot(CE_REAL,reps = 999)   #independent run of algorithm capital expenditure
+inde_CEENSE=inde_CE$ensemble
+inde_za_ce=apply(inde_CEENSE,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C  
+inde_breakCE=table(factor(inde_za_ce,levels = ALL_INDICES))                 
+#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL TOTAL EXPENDITURE###############################
+inde_TE=meboot(TE_REAL,reps = 999)    #independent run of algorithm total expenditure
+inde_TEENSE=inde_TE$ensemble
+inde_za_te=apply(inde_TEENSE,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)       #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+inde_breakTE=table(factor(inde_za_te,levels = ALL_INDICES))   
+##############JENSEN-SHANON DIVERGENCE(ALGORITHMIC STABILITY DIAGNOSTIC)##########################################################
+###############REAL GDP(ALGORITHMIC STABILITY DIAGNOSTIC)#########################################################################              
+J.REPLGDP=repl_breakGDP/sum(repl_breakGDP) #REFERENCE RUN REAL GDP
+Q.INDEGDP=inde_breakGDP/sum(inde_breakGDP) #INDPENDENT RUN REAL GDP
+stat_JSDGDP=rbind(J.REPLGDP,Q.INDEGDP)
+JSD_ASD_GDP=suppressMessages(JSD(stat_JSDGDP))   #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN    
+###############REAL REVENUE EXPENDITURE(ALGORITHMIC STABILITY DIAGNOSTIC)######################################################### 
+J.REPLRE=repl_breakRE/sum(repl_breakRE)   #REFERENCE RUN REAL REVENUE EXCPENDITURE
+Q.INDERE=inde_breakRE/sum(inde_breakRE)   #INDEPENDENT RUN REAL REVENUE EXCPENDITURE
+stat_JSDRE=rbind(J.REPLRE,Q.INDERE)
+JSD_ASD_RE=suppressMessages(JSD(stat_JSDRE)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN 
+                 
