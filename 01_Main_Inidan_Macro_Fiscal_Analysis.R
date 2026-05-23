@@ -107,4 +107,40 @@ print(JSD_ASD_RE)       #Table 2(Refer the main paper) adopted tolerance level 0
 ########REAL CAPITAL EXPENDITURE################################################################################################
 print(JSD_ASD_CE)       #Table 2(Refer the main paper) adopted tolerance level 0.01           
 ########REAL TOTAL EXPENDITURE##################################################################################################
- print(JSD_ASD_TE)      #Table 2(Refer the main paper) adopted tolerance level 0.01                 
+ print(JSD_ASD_TE)      #Table 2(Refer the main paper) adopted tolerance level 0.01    
+################################################################################################################################                 
+################################NULL MONTE-CARLO STRESS TEST####################################################################
+#####################NULL PLACEBO SERIES (WITHOUT STRUCTURAL BREAK)#############################################################                 
+Z=14 
+zt=1:Z
+intercept=100    #INTERCEPT
+slope_null=2     #SLOPE
+STANDARD_DEV=1
+Y_NULL=intercept+slope_null*zt+rnorm(Z,0,STANDARD_DEV)    #NULL PLACEBO SERIES GENERATION(REFER SECTION 4.4)
+#############APPLICATION OF MAXIMUM ENTROPY BOOTSTRAP ON NULL-PLACEBO SERIES##################################################                 
+NULL_DATA_PROCESS=meboot(Y_NULL,reps = 999)    #MAXIMUM ENTROPY BOOTSTRAP NULL PLACEBO SERIES
+NULL_SERIES=NULL_DATA_PROCESS$ensemble
+####APPLICATION OF ZIVOT-ANDREWS UNIT ROOT TEST ON GENERATED 999 PLAUSIBLE SERIES FOR NULL PLACEBO SERIES#####################                  
+NULL_ZA_SERIES=apply(NULL_SERIES,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)      #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+NULL_BREAK=table(factor(NULL_ZA_SERIES,levels = ALL_INDICES))
+print(NULL_BREAK)     #BREAK-DATE FREQUENCY DISTRIBUTION FOR NULL PLACEBO SERIES 
+###########JENSEN-SHANNON DIVERGENC VALUE BETWEEN NULL PLACEBO SERIES AND REAL GDP############################################
+P.NULL=NULL_BREAK/sum(NULL_BREAK)   
+stat_JSD_NULL_GDP=rbind(P.NULL,J.REPLGDP) #J.REPLGDPCALCULATED IN THE JSD ALGORITHMIC STABILITY DIAGNOSTIC OF THIS CODE 
+JSD_NULL_GDP=suppressMessages(JSD(stat_JSD_NULL_GDP))        #JSD VAULE CALCULATED BETWEEN NULL PLACEBO SERIES AND REAL GDP  
+print(JSD_NULL_GDP)   
+##########JENSEN-SHANNON DIVERGENC VALUE BETWEEN NULL PLACEBO SERIES AND REAL REVENUE EXPENDITURE############################
+stat_JSD_NULL_RE=rbind(P.NULL,J.REPLRE)    #J.REPLRE CALCULATED IN THE JSD ALGORITHMIC STABILITY DIAGNOSTIC OF THIS CODE 
+JSD_NULL_RE=suppressMessages(JSD(stat_JSD_NULL_RE)) #JSD VALUE CALCULATED BETWEEN NUL PLACEBO SERIES AND REAL REVENUE EXPENDITURE
+print(JSD_NULL_RE)
+##########JENSEN-SHANNON DIVERGENC VALUE BETWEEN NULL PLACEBO SERIES AND REAL CAPITAL EXPENDITURE############################ 
+stat_JSD_NULL_CE=rbind(P.NULL,J.REPLCE) #J.REPLCE CALCULATED IN THE JSD ALGORITHMIC STABILITY DIAGNOSTIC OF THIS CODE
+JSD_NULL_CE=suppressMessages(JSD(stat_JSD_NULL_CE)) #JSD VALUE CALCULATED BETWEEN NUL PLACEBO SERIES AND REAL CAPITAL EXPENDITURE
+print(JSD_NULL_CE)
+##########JENSEN-SHANNON DIVERGENC VALUE BETWEEN NULL PLACEBO SERIES AND REAL TOTAL EXPENDITURE############################
+stat_JSD_NULL_TE=rbind(P.NULL,J.REPLTE) #J.REPLTE CALCULATED IN THE JSD ALGORITHMIC STABILITY DIAGNOSTIC OF THIS CODE
+JSD_NULL_TE=suppressMessages(JSD(stat_JSD_NULL_TE)) #JSD VALUE CALCULATED BETWEEN NUL PLACEBO SERIES AND REAL TOTAL EXPENDITURE
+print(JSD_NULL_TE) 
+#################SIGNAL-TO-NOISE RATIO######################################################################################
+                     
