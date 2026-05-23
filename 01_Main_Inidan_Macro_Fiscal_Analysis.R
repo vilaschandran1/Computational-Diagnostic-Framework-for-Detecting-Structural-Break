@@ -159,4 +159,15 @@ print(SNR_CE)  #Table 3(refer the main paper)
 ###################SIGNAL-TO-NOISE-RATIO(REAL TOTAL EXPENDITURE)#############################################################
 print(SNR_TE)  #Table 3(refer the main paper)                
 #####################RESULTS FOR DOMINANCE SHARE(%)##########################################################################
-                     
+################DOMINANCE SHARE(%) REAL GDP##################################################################################
+Dominace_Share_REALGDP=((max(repl_breakGDP))/999)*100
+print(Dominace_Share_REALGDP)    #Table 3(refer the main paper)                  
+################DOMINANCE SHARE(%) REAL REVENUE EXPENDITURE##################################################################       
+Dominace_Share_REALREVE=((max(repl_breakRE))/999)*100
+print(Dominace_Share_REALREVE)    #Table 3(refer the main paper)
+################DOMINANCE SHARE(%) REAL CAPITAL EXPENDITURE##################################################################       
+Dominace_Share_REALCAP=((max(repl_breakCE))/999)*100
+print(Dominace_Share_REALCAP)    #Table 3(refer the main paper)
+################DOMINANCE SHARE(%) REAL TOTAL EXPENDITURE##################################################################       
+Dominace_Share_REALTOTAL=((max(repl_breakTE))/999)*100
+print(Dominace_Share_REALTOTAL)    #Table 3(refer the main paper)                     
