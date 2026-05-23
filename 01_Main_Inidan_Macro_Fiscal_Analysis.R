@@ -143,4 +143,20 @@ stat_JSD_NULL_TE=rbind(P.NULL,J.REPLTE) #J.REPLTE CALCULATED IN THE JSD ALGORITH
 JSD_NULL_TE=suppressMessages(JSD(stat_JSD_NULL_TE)) #JSD VALUE CALCULATED BETWEEN NUL PLACEBO SERIES AND REAL TOTAL EXPENDITURE
 print(JSD_NULL_TE) 
 #################SIGNAL-TO-NOISE RATIO######################################################################################
+noise_baseline_list=c(JSD_ASD_GDP,JSD_ASD_RE,JSD_ASD_CE,JSD_ASD_TE)  #NOISE BASE     
+noisebase=max(noise_baseline_list)  #MAXIMUM VALUE FROM THE noise_baseline_list
+SNR_GDP=JSD_NULL_GDP/noisebase    #SIGNAL-TO-NOISE RATIO FOR REAL GDP
+SNR_RE=JSD_NULL_RE/noisebase      #SIGNAL-TO-NOISE RATIO FOR REAL REVENUE EXPENDITURE
+SNR_CE=JSD_NULL_CE/noisebase      #SIGNAL-TO-NOISE RATIO FOR REAL CAPITAL EXPENDITURE
+SNR_TE=JSD_NULL_TE/noisebase      #SIGNAL-TO-NOISE RATIO FOR REAL TOTAL EXPENDITURE
+#######################RESULTS FOR SIGNAL-TO-NOISE-RATIO#####################################################################
+###################SIGNAL-TO-NOISE-RATIO(REAL GDP)###########################################################################
+print(SNR_GDP) #Table 3(refer the main paper)
+###################SIGNAL-TO-NOISE-RATIO(REAL REVENUE EXPENDITURE)###########################################################
+print(SNR_RE)  #Table 3(refer the main paper)
+###################SIGNAL-TO-NOISE-RATIO(REAL CAPITAL EXPENDITURE)########################################################### 
+print(SNR_CE)  #Table 3(refer the main paper)
+###################SIGNAL-TO-NOISE-RATIO(REAL TOTAL EXPENDITURE)#############################################################
+print(SNR_TE)  #Table 3(refer the main paper)                
+#####################RESULTS FOR DOMINANCE SHARE(%)##########################################################################
                      
