@@ -14,21 +14,21 @@ RE_REAL=c(1228065,1213184,1222613,1233803,1233168,1297455,1391728,1437965,160670
 ##GDP_REAL=Real Gross Domestic Product,CE_REAL=Real Capital Expenditure,TE_REAL= Real Total Expenditure
 #RE_REAL=Real Revenue Expenditure
 ALL_INDICES=1:14
-######################APPLYNG MAXIMUM ENTROPY BOOTSTRAP ON REAL GDP TO GENERATE 999 PLAUSIBLE SERIES#################################
+######################APPLYING MAXIMUM ENTROPY BOOTSTRAP ON REAL GDP TO GENERATE 999 PLAUSIBLE SERIES################################
 repl_GDP=meboot(GDP_REAL,reps = 999)   #Maximum Entropy Bootstrap gdp
 repl_GDPENSE=repl_GDP$ensemble
 #######################EMBEDDING ZIVOT-ANDREWS UNIT ROOT TEST ON GENERATED 999 PLAUSIBLE SERIES FOR REAL GDP#########################
 repl_za_gdp=apply(repl_GDPENSE,2,function(x)
   ur.za(x,model = "both",lag=1)@bpoint)                      #Zivot-Andrews Unit Root Test Model C
 repl_breakGDP= table(factor(repl_za_gdp,levels = ALL_INDICES))
-######################APPLYNG MAXIMUM ENTROPY BOOTSTRAP ON REAL REVENUE EXPENDITURE  TO GENERATE 999 PLAUSIBLE SERIES#################
+######################APPLYING MAXIMUM ENTROPY BOOTSTRAP ON REAL REVENUE EXPENDITURE  TO GENERATE 999 PLAUSIBLE SERIES################
 repl_RE=meboot(RE_REAL,reps = 999)       #Maximum Entropy Bootstrap revenue expenditure
 repl_REENSE=repl_RE$ensemble
 ######################EMBEDDING ZIVOT-ANDREWS UNIT ROOT TEST ON GENERATED 999 PLAUSIBLE SERIES FOR REAL REVENUE EXPENDITURE###########
 repl_za_re=apply(repl_REENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)   #Zivot-Andrews Unit Root Test Model C
 repl_breakRE=table(factor(repl_za_re,levels = ALL_INDICES))
-#################APPLYNG MAXIMUM ENTROPY BOOTSTRAP ON REAL CAPITAL EXPENDITURE  TO GENERATE 999 PLAUSIBLE SERIES######################
+#################APPLYING MAXIMUM ENTROPY BOOTSTRAP ON REAL CAPITAL EXPENDITURE  TO GENERATE 999 PLAUSIBLE SERIES#####################
 repl_CE=meboot(CE_REAL,reps = 999)      #Maximum Entropy Bootstrap capital expenditure
 repl_CEENSE=repl_CE$ensemble  
 ######################EMBEDDING ZIVOT-ANDREWS UNIT ROOT TEST ON GENERATED 999 PLAUSIBLE SERIES FOR REAL CAPITAL EXPENDITURE###########
@@ -55,7 +55,7 @@ print(repl_breakTE) #Figure 1(refer main paper)
 ####################################################################################################################################
 ######################################ALGORITHMIC STABILITY DIAGNOSTIC##############################################################
 #########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL GDP#############################################
-inde_GDP=meboot(GDP_REAL,reps = 999)  #independen run of algorithm for Real GDP
+inde_GDP=meboot(GDP_REAL,reps = 999)  #independent run of algorithm for Real GDP
 inde_GDPENSE=inde_GDP$ensemble
 inde_za_gdp=apply(inde_GDPENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
@@ -160,14 +160,14 @@ print(SNR_CE)  #Table 3(refer the main paper)
 print(SNR_TE)  #Table 3(refer the main paper)                
 #####################RESULTS FOR DOMINANCE SHARE(%)##########################################################################
 ################DOMINANCE SHARE(%) REAL GDP##################################################################################
-Dominace_Share_REALGDP=((max(repl_breakGDP))/999)*100
-print(Dominace_Share_REALGDP)    #Table 3(refer the main paper)                  
+Dominance_Share_REALGDP=((max(repl_breakGDP))/999)*100
+print(Dominance_Share_REALGDP)    #Table 3(refer the main paper)                  
 ################DOMINANCE SHARE(%) REAL REVENUE EXPENDITURE##################################################################       
-Dominace_Share_REALREVE=((max(repl_breakRE))/999)*100
-print(Dominace_Share_REALREVE)    #Table 3(refer the main paper)
+Dominance_Share_REALREVE=((max(repl_breakRE))/999)*100
+print(Dominance_Share_REALREVE)    #Table 3(refer the main paper)
 ################DOMINANCE SHARE(%) REAL CAPITAL EXPENDITURE##################################################################       
-Dominace_Share_REALCAP=((max(repl_breakCE))/999)*100
-print(Dominace_Share_REALCAP)    #Table 3(refer the main paper)
+Dominance_Share_REALCAP=((max(repl_breakCE))/999)*100
+print(Dominance_Share_REALCAP)    #Table 3(refer the main paper)
 ################DOMINANCE SHARE(%) REAL TOTAL EXPENDITURE##################################################################       
-Dominace_Share_REALTOTAL=((max(repl_breakTE))/999)*100
-print(Dominace_Share_REALTOTAL)    #Table 3(refer the main paper)                     
+Dominance_Share_REALTOTAL=((max(repl_breakTE))/999)*100
+print(Dominance_Share_REALTOTAL)    #Table 3(refer the main paper)                     
