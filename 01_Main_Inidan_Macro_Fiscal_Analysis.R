@@ -272,5 +272,47 @@ print(sy_t6_B)  #RISE AND CRASH(UPWARD-RISING)
 print(sy_t7_B)  #CRASH AND FALL(DOWNWARD-FALLING)
 print(sy_t8_B)  #RISE AND CRASH(DOWNWARD-FALLING)
 print(sy_t9_B)  #SURGE AND SURGE(DOWNWARD-FALLING) 
-print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING) 
-                  
+print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING)
+################################################################################################################################                  
+########ALGORITHMIC STABILITY OF SYNTHETIC SERIES WITH STRUCTURAL BREAK######################################################### 
+#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK ##################################################                  
+syn_b3_1_I=meboot(ar_break3_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM CRASH AND FALL SCENARIO (UPWARD-RISING)
+syn_b3_1ense_I=syn_b3_1_I$ensemble
+syn_b3_1za_I=apply(syn_b3_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t3_1_I=(table(factor(syn_b3_1za_I,levels = ALL_I_B)))
+syn_b4_1_I=meboot(ar_break4_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM CRASH AND SURGE SCENARIO (UPWARD-RISING)
+syn_b4_1ense_I=syn_b4_1_I$ensemble
+syn_b4_1za_I=apply(syn_b4_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t4_1_I=(table(factor(syn_b4_1za_I,levels = ALL_I_B)))
+syn_b5_1_I=meboot(ar_break5_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM SURGE AND SURGE(UPWARD-RISING)  
+syn_b5_1ense_I=syn_b5_1_I$ensemble
+syn_b5_1za_I=apply(syn_b5_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t5_1_I=(table(factor(syn_b5_1za_I,levels = ALL_I_B)))
+syn_b6_1_I=meboot(ar_break6_B,reps=999)
+syn_b6_1ense_I=syn_b6_1_I$ensemble
+syn_b6_1za_I=apply(syn_b6_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t6_1_I=(table(factor(syn_b6_1za_I,levels = ALL_I_B)))
+syn_b7_1_I=meboot(ar_break7_B,reps=999)
+syn_b7_1ense_I=syn_b7_1_I$ensemble
+syn_b7_1za_I=apply(syn_b7_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t7_1_I=(table(factor(syn_b7_1za_I,levels = ALL_I_B)))
+syn_b8_1_I=meboot(ar_break8_B,reps=999)
+syn_b8_1ense_I=syn_b8_1_I$ensemble
+syn_b8_1za_I=apply(syn_b8_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t8_1_I=(table(factor(syn_b8_1za_I,levels = ALL_I_B)))
+syn_b9_1_I=meboot(ar_break9_B,reps=999)
+syn_b9_1ense_I=syn_b9_1_I$ensemble
+syn_b9_1za_I=apply(syn_b9_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t9_1_I=(table(factor(syn_b9_1za_I,levels = ALL_I_B)))
+syn_b10_1_I=meboot(ar_break10_B,reps=999)
+syn_b10_1ense_I=syn_b10_1_I$ensemble
+syn_b10_1za_I=apply(syn_b10_1ense_I,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t10_1_I=(table(factor(syn_b10_1za_I,levels = ALL_I_B)))
