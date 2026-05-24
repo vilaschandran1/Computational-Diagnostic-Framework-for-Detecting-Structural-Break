@@ -264,3 +264,13 @@ syn_b10ense_B=syn_b10_B$ensemble
 syn_b10za_B=apply(syn_b10ense_B,2,function(x)
   ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t10_B=(table(factor(syn_b10za_B,levels = ALL_I_B)))                     
+###########################BREAK-DATE FREQUENCY DISTRIBUTION FOR ARTIFICIALLY INDUCED BREAK SCENARIOS############################
+print(sy_t3_B)  #CRASH AND FALL(UPWARD-RISING)
+print(sy_t4_B)  #CRASH AND SURGE(UPWARD-RISING)
+print(sy_t5_B)  #SURGE AND SURGE(UPWARD-RISING)
+print(sy_t6_B)  #RISE AND CRASH(UPWARD-RISING)
+print(sy_t7_B)  #CRASH AND FALL(DOWNWARD-FALLING)
+print(sy_t8_B)  #RISE AND CRASH(DOWNWARD-FALLING)
+print(sy_t9_B)  #SURGE AND SURGE(DOWNWARD-FALLING) 
+print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING) 
+                  
