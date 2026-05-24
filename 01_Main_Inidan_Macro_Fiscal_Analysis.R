@@ -265,54 +265,104 @@ syn_b10za_B=apply(syn_b10ense_B,2,function(x)
   ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t10_B=(table(factor(syn_b10za_B,levels = ALL_I_B)))                     
 ###########################BREAK-DATE FREQUENCY DISTRIBUTION FOR ARTIFICIALLY INDUCED BREAK SCENARIOS############################
-print(sy_t3_B)  #CRASH AND FALL(UPWARD-RISING)
-print(sy_t4_B)  #CRASH AND SURGE(UPWARD-RISING)
-print(sy_t5_B)  #SURGE AND SURGE(UPWARD-RISING)
-print(sy_t6_B)  #RISE AND CRASH(UPWARD-RISING)
-print(sy_t7_B)  #CRASH AND FALL(DOWNWARD-FALLING)
-print(sy_t8_B)  #RISE AND CRASH(DOWNWARD-FALLING)
-print(sy_t9_B)  #SURGE AND SURGE(DOWNWARD-FALLING) 
-print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING)
+print(sy_t3_B)  #CRASH AND FALL(UPWARD-RISING),FIGURE 2(refer main paper)
+print(sy_t4_B)  #CRASH AND SURGE(UPWARD-RISING),FIGURE 2(refer main paper)
+print(sy_t5_B)  #SURGE AND SURGE(UPWARD-RISING),FIGURE 2(refer main paper)
+print(sy_t6_B)  #RISE AND CRASH(UPWARD-RISING),FIGURE 2(refer main paper)
+print(sy_t7_B)  #CRASH AND FALL(DOWNWARD-FALLING),FIGURE 3(refer main paper)
+print(sy_t8_B)  #RISE AND CRASH(DOWNWARD-FALLING),FIGURE 3(refer main paper)
+print(sy_t9_B)  #SURGE AND SURGE(DOWNWARD-FALLING),FIGURE 3(refer main paper) 
+print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING),FIGURE 3(refer main paper)
 ################################################################################################################################                  
 ########ALGORITHMIC STABILITY OF SYNTHETIC SERIES WITH STRUCTURAL BREAK######################################################### 
 #########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK ##################################################                  
-syn_b3_1_I=meboot(ar_break3_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM CRASH AND FALL SCENARIO (UPWARD-RISING)
+syn_b3_1_I=meboot(ar_break3_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON CRASH AND FALL SCENARIO (UPWARD-RISING)
 syn_b3_1ense_I=syn_b3_1_I$ensemble
 syn_b3_1za_I=apply(syn_b3_1ense_I,2,function(x)
   ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t3_1_I=(table(factor(syn_b3_1za_I,levels = ALL_I_B)))
-syn_b4_1_I=meboot(ar_break4_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM CRASH AND SURGE SCENARIO (UPWARD-RISING)
+syn_b4_1_I=meboot(ar_break4_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON CRASH AND SURGE SCENARIO (UPWARD-RISING)
 syn_b4_1ense_I=syn_b4_1_I$ensemble
 syn_b4_1za_I=apply(syn_b4_1ense_I,2,function(x)
   ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t4_1_I=(table(factor(syn_b4_1za_I,levels = ALL_I_B)))
-syn_b5_1_I=meboot(ar_break5_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM SURGE AND SURGE(UPWARD-RISING)  
+syn_b5_1_I=meboot(ar_break5_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON SURGE AND SURGE SCENARIO (UPWARD-RISING)  
 syn_b5_1ense_I=syn_b5_1_I$ensemble
 syn_b5_1za_I=apply(syn_b5_1ense_I,2,function(x)
   ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t5_1_I=(table(factor(syn_b5_1za_I,levels = ALL_I_B)))
-syn_b6_1_I=meboot(ar_break6_B,reps=999)
+syn_b6_1_I=meboot(ar_break6_B,reps=999) #INDEPENDENT RUN OF ALGORITHM ON RISE AND CRASH SCENARIO (UPWARD-RISING)  
 syn_b6_1ense_I=syn_b6_1_I$ensemble
 syn_b6_1za_I=apply(syn_b6_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint)
+  ur.za(x,model="both",lag = 1)@bpoint  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t6_1_I=(table(factor(syn_b6_1za_I,levels = ALL_I_B)))
-syn_b7_1_I=meboot(ar_break7_B,reps=999)
+syn_b7_1_I=meboot(ar_break7_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON CRASH AND FALL(DOWNWARD-FALLING)
 syn_b7_1ense_I=syn_b7_1_I$ensemble
 syn_b7_1za_I=apply(syn_b7_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t7_1_I=(table(factor(syn_b7_1za_I,levels = ALL_I_B)))
-syn_b8_1_I=meboot(ar_break8_B,reps=999)
+syn_b8_1_I=meboot(ar_break8_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON  #RISE AND CRASH(DOWNWARD-FALLING)
 syn_b8_1ense_I=syn_b8_1_I$ensemble
 syn_b8_1za_I=apply(syn_b8_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t8_1_I=(table(factor(syn_b8_1za_I,levels = ALL_I_B)))
-syn_b9_1_I=meboot(ar_break9_B,reps=999)
+syn_b9_1_I=meboot(ar_break9_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON SURGE AND SURGE(DOWNWARD-FALLING)
 syn_b9_1ense_I=syn_b9_1_I$ensemble
 syn_b9_1za_I=apply(syn_b9_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t9_1_I=(table(factor(syn_b9_1za_I,levels = ALL_I_B)))
-syn_b10_1_I=meboot(ar_break10_B,reps=999)
+syn_b10_1_I=meboot(ar_break10_B,reps=999) #INDEPENDENT RUN OF ALGORITHM ON CRASH AND SURGE(DOWNWARD-FALLING)  
 syn_b10_1ense_I=syn_b10_1_I$ensemble
 syn_b10_1za_I=apply(syn_b10_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t10_1_I=(table(factor(syn_b10_1za_I,levels = ALL_I_B)))
+#########JENSEN-SHANON DIVERGENCE(ALGORITHMIC STABILITY OF SYNTHETIC SERIES WITH ARTIFICIAL STRUCTURAL BREAK)########################
+#################################CRASH AND FALL SCENARIO(UPWARD-RISING)##############################################################                    
+J.SIMULATION1_S=sy_t3_B/sum(sy_t3_B)  #REFERENCE RUN
+Q.SIMULATION1_S=sy_t3_1_I/sum(sy_t3_1_I) #INDEPENDENT RUN
+STAT_SIMULATION1_S=rbind(J.SIMULATION1_S,Q.SIMULATION1_S)
+JSD_SIMULATION1_S=suppressMessages(JSD(STAT_SIMULATION1_S)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+################################CRASH AND SURGE SCENARIO (UPWARD-RISING)#############################################################                 
+J.SIMULATION2_S=sy_t4_B/sum(sy_t4_B)  #REFERENCE RUN
+Q.SIMULATION2_S=sy_t4_1_I/sum(sy_t4_1_I) #INDEPENDENT RUN
+STAT_SIMULATION2_S=rbind(J.SIMULATION2_S,Q.SIMULATION2_S)
+JSD_SIMULATION2_S=suppressMessages(JSD(STAT_SIMULATION2_S)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+################################SURGE AND SURGE SCENARIO (UPWARD-RISING)##############################################################                    
+J.SIMULATION3_S=sy_t5_B/sum(sy_t5_B)  #REFERENCE RUN
+Q.SIMULATION3_S=sy_t5_1_I/sum(sy_t5_1_I) #INDEPENDENT RUN 
+STAT_SIMULATION3_S=rbind(J.SIMULATION3_S,Q.SIMULATION3_S)
+JSD_SIMULATION3_S=suppressMessages(JSD(STAT_SIMULATION3_S))  #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+################################RISE AND CRASH SCENARIO(UPWARD-RISING)#################################################################                   
+J.SIMULATION4_S=sy_t6_B/sum(sy_t6_B)  #REFERENCE RUN
+Q.SIMULATION4_S=sy_t6_1_I/sum(sy_t6_1_I) #INDEPENDENT RUN
+STAT_SIMULATION4_S=rbind(J.SIMULATION4_S,Q.SIMULATION4_S)
+JSD_SIMULATION4_S=suppressMessages(JSD(STAT_SIMULATION4_S))  #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+################################CRASH AND FALL SCENARIO(DOWNWARD-FALLING)#############################################################                    
+J.SIMULATION5_S=sy_t7_B/sum(sy_t7_B)  #REFERENCE RUN
+Q.SIMULATION5_S=sy_t7_1_I/sum(sy_t7_1_I) #INDEPENDENT RUN 
+STAT_SIMULATION5_S=rbind(J.SIMULATION5_S,Q.SIMULATION5_S)
+JSD_SIMULATION5_S=suppressMessages(JSD(STAT_SIMULATION5_S))  #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+###############################RISE AND CRASH SCENARIO(DOWNWARD-FALLING)#############################################################                    
+J.SIMULATION6_S=sy_t8_B/sum(sy_t8_B)  #REFERENCE RUN
+Q.SIMULATION6_S=sy_t8_1_I/sum(sy_t8_1_I) #INDEPENDENT RUN
+STAT_SIMULATION6_S=rbind(J.SIMULATION6_S,Q.SIMULATION6_S)
+JSD_SIMULATION6_S=suppressMessages(JSD(STAT_SIMULATION6_S))  #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+###############################SURGE AND SURGE SCENARIO(DOWNWARD-FALLING)##########################################################                    
+J.SIMULATION7_S=sy_t9_B/sum(sy_t9_B)  #REFERENCE RUN
+Q.SIMULATION7_S=sy_t9_1_I/sum(sy_t9_1_I) #INDEPENDENT RUN
+STAT_SIMULATION7_S=rbind(J.SIMULATION7_S,Q.SIMULATION7_S)
+JSD_SIMULATION7_S=suppressMessages(JSD(STAT_SIMULATION7_S)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN 
+##############################CRASH AND SURGE SCENARIO(DOWNWARD-FALLING)##########################################################                    
+J.SIMULATION8_S=sy_t10_B/sum(sy_t10_B)  #REFERENCE RUN
+Q.SIMULATION8_S=sy_t10_1_I/sum(sy_t10_1_I) #INDEPENDENT RUN
+STAT_SIMULATION8_S=rbind(J.SIMULATION8_S,Q.SIMULATION8_S)
+JSD_SIMULATION8_S=suppressMessages(JSD(STAT_SIMULATION8_S)) #JSD CALCULATION BETWEEN REFERENCE RUN AND INDEPENDENT RUN
+###############################RESULTS FOR STABILITY OF ALGORITHM###############################################################
+print(JSD_SIMULATION1_S) #CRASH AND FALL SCENARIO(UPWARD-RISING) Table 5(refer main paper)   
+print(JSD_SIMULATION2_S) #CRASH AND SURGE SCENARIO (UPWARD-RISING) Table 5(refer main paper) 
+print(JSD_SIMULATION3_S) #SURGE AND SURGE SCENARIO (UPWARD-RISING)  Table 5(refer main paper)
+print(JSD_SIMULATION4_S) #RISE AND CRASH SCENARIO(UPWARD-RISING)  Table 5(refer main paper)
+print(JSD_SIMULATION5_S) #CRASH AND FALL SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)
+print(JSD_SIMULATION6_S) #RISE AND CRASH SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)
+print(JSD_SIMULATION7_S) #SURGE AND SURGE SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)
+print(JSD_SIMULATION8_S) #CRASH AND SURGE SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)                   
