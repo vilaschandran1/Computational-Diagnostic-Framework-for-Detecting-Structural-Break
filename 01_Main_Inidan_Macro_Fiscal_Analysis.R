@@ -215,3 +215,52 @@ ar_break7_B=base_series1_B+(theta4_B*step_dummy_B)+(gamma4_B*trend_dummy_B)     
 ar_break8_B=base_series1_B+(theta5_B*step_dummy_B)+(gamma5_B*trend_dummy_B)     #RISE AND CRASH(DOWNWARD-FALLING) refer Table 1
 ar_break9_B=base_series1_B+(theta6_B*step_dummy_B)+(gamma6_B*trend_dummy_B)     #SURGE AND SURGE(DOWNWARD-FALLING) refer Table 1
 ar_break10_B=base_series1_B+(theta7_B*step_dummy_B)+(gamma7_B*trend_dummy_B)    #CRASH AND SURGE(DOWNWARD-FALLING) refer Table 1                 
+#######APPLICATION OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP ON STRUCTURAL BREAK SCENARIOS#####################################
+############################ #CRASH AND FALL(UPWARD-RISING)#####################################################################                     
+syn_b3_B=meboot(ar_break3_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b3ense_B=syn_b3_B$ensemble
+syn_b3za_B=apply(syn_b3ense_B,2,function(x)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+  ur.za(x,model="both",lag = 1)@bpoint)
+sy_t3_B=(table(factor(syn_b3za_B,levels = ALL_I_B)))
+##############################CRASH AND SURGE(UPWARD-RISING)#####################################################################                 
+syn_b4_B=meboot(ar_break4_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b4ense_B=syn_b4_B$ensemble
+syn_b4za_B=apply(syn_b4ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)   #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t4_B=(table(factor(syn_b4za_B,levels = ALL_I_B)))
+##############################SURGE AND SURGE(UPWARD-RISING)#####################################################################                 
+syn_b5_B=meboot(ar_break5_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b5ense_B=syn_b5_B$ensemble
+syn_b5za_B=apply(syn_b5ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t5_B=(table(factor(syn_b5za_B,levels = ALL_I_B)))
+##############################RISE AND CRASH(UPWARD-RISING)#####################################################################                 
+syn_b6_B=meboot(ar_break6_B,reps=999)   #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b6ense_B=syn_b6_B$ensemble
+syn_b6za_B=apply(syn_b6ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t6_B=(table(factor(syn_b6za_B,levels = ALL_I_B)))
+##############################CRASH AND FALL(DOWNWARD-FALLING)#################################################################                 
+syn_b7_B=meboot(ar_break7_B,reps=999)   #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b7ense_B=syn_b7_B$ensemble
+syn_b7za_B=apply(syn_b7ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)   #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t7_B=(table(factor(syn_b7za_B,levels = ALL_I_B)))
+##############################RISE AND CRASH(DOWNWARD-FALLING)#################################################################                 
+syn_b8_B=meboot(ar_break8_B,reps=999)  #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b8ense_B=syn_b8_B$ensemble
+syn_b8za_B=apply(syn_b8ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t8_B=(table(factor(syn_b8za_B,levels = ALL_I_B)))
+##############################SURGE AND SURGE(DOWNWARD-FALLING)#################################################################                 
+syn_b9_B=meboot(ar_break9_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b9ense_B=syn_b9_B$ensemble
+syn_b9za_B=apply(syn_b9ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint)   #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t9_B=(table(factor(syn_b9za_B,levels = ALL_I_B)))
+##############################CRASH AND SURGE(DOWNWARD-FALLING)#################################################################                 
+syn_b10_B=meboot(ar_break10_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
+syn_b10ense_B=syn_b10_B$ensemble
+syn_b10za_B=apply(syn_b10ense_B,2,function(x)
+  ur.za(x,model="both",lag = 1)@bpoint) #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+sy_t10_B=(table(factor(syn_b10za_B,levels = ALL_I_B)))                     
