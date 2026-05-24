@@ -366,3 +366,34 @@ print(JSD_SIMULATION5_S) #CRASH AND FALL SCENARIO(DOWNWARD-FALLING) Table 5(refe
 print(JSD_SIMULATION6_S) #RISE AND CRASH SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)
 print(JSD_SIMULATION7_S) #SURGE AND SURGE SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)
 print(JSD_SIMULATION8_S) #CRASH AND SURGE SCENARIO(DOWNWARD-FALLING) Table 5(refer main paper)                   
+################################################################################################################################
+######################################QUANTIFYING SENSITIVITY VIA JENSEN-SHANNON DIVERGENCE#####################################
+######################################NULL BASELINE SERIES GENERATION###########################################################
+######################################UPWARD-RISING NULL BASELINE SERIES########################################################                    
+Z1_U=14              
+zt1_U=1:Z1_U
+intercept1_U=100
+slope_null1_U=2
+STANDARD_DEV1_U=1
+Y_NULL1_U=intercept1_U+slope_null1_U*zt1_U+rnorm(Z1_U,0,STANDARD_DEV1_U)  #UPWARD-RISING NULL BASELINE SERIES(WITHOUT STR
+NULL_DATA_PROCESS1_U=meboot(Y_NULL1_U,reps = 999) #MAXIMUM ENTROPY BOOTSTRAP
+NULL_SERIES1_U=NULL_DATA_PROCESS1_U$ensemble
+NULL_ZA_SERIES1_U=apply(NULL_SERIES1_U,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)  #APPLICATION OF ZIVOT-ANDREWS UNIT ROOT TEST
+NULL_BREAK1_U=table(factor(NULL_ZA_SERIES1_U,levels = ALL_INDICES))
+#########JENSEN-SHANNON DIVERGENCE BETWEEN UPWARD-RISING NULL BASELINE AND UPWARD-RISING SERIES WITH ARTIFICIAL BREAK########## 
+####################JSD CALCULATION BETWEEN UPWARD RISING NULL BASE LINE AND CRASH AND FALL SCENARIO###########################                        
+P.NULL1_U=NULL_BREAK1_U/sum(NULL_BREAK1_U) #UPWARD-RISING NULL BASELINE 
+J.SIM_U=sy_t3_B/sum(sy_t3_B) #CRASH AND FALL SCENARIO
+STAT.SIM_U=rbind(J.SIM_U,P.NULL1_U)
+JSD_SIM_U=suppressMessages(JSD(STAT.SIM_U))
+                        
+J.SIM1_U=sy_t4_B/sum(sy_t4_B)
+STAT.SIM1_U=rbind(J.SIM1_U,P.NULL1_U)
+JSD_SIM1_U=suppressMessages(JSD(STAT.SIM1_U))
+J.SIM2_U=sy_t5_B/sum(sy_t5_B)
+STAT.SIM2_U=rbind(J.SIM2_U,P.NULL1_U)
+JSD_SIM2_U=suppressMessages(JSD(STAT.SIM2_U))
+J.SIM3_U=sy_t6_B/sum(sy_t6_B)
+STAT.SIM3_U=rbind(J.SIM3_U,P.NULL1_U)
+JSD_SIM3_U=suppressMessages(JSD(STAT.SIM3_U))                        
