@@ -170,4 +170,48 @@ Dominance_Share_REALCAP=((max(repl_breakCE))/999)*100
 print(Dominance_Share_REALCAP)    #Table 3(refer the main paper)
 ################DOMINANCE SHARE(%) REAL TOTAL EXPENDITURE##################################################################       
 Dominance_Share_REALTOTAL=((max(repl_breakTE))/999)*100
-print(Dominance_Share_REALTOTAL)    #Table 3(refer the main paper)                     
+print(Dominance_Share_REALTOTAL)    #Table 3(refer the main paper) 
+############################################################################################################################
+########################################ARTIFICIAL BREAK DIAGNOSTIC##########################################################
+################################GENERATION OF TWO CONTROLLED SYNTHETIC TIME SERIES###########################################                     
+t_B=14
+alp_B=100
+beta_B=20
+beta1_B=-15
+beta2_B=-20
+alp1_B=1500
+time_index_B=1:t_B
+ALL_I_B=1:14
+noise_B=rnorm(t_B,0,1)
+theta_B=-90    #PARAMETER FOR CRASH AND FALL SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+gamma_B=-30    #PARAMETER FOR CRASH AND FALL SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+theta1_B=-100  #PARAMETER FOR CRASH AND SURGE SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+gamma1_B=35    #PARAMETER FOR CRASH AND SURGE SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+theta2_B=100   #PARAMETER FOR SURGE AND SURGE SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+gamma2_B=45    #PARAMETER FOR SURGE AND SURGE SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+theta3_B=100   #PARAMETER FOR RISE AND CRASH SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+gamma3_B=-34   #PARAMETER FOR RISE AND CRASH SCENARIO(UPWARD-RISING) Table 1(refer main paper)
+theta4_B=-200  #PARAMETER FOR CRASH AND FALL SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+gamma4_B=-25   #PARAMETER FOR CRASH AND FALL SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+theta5_B=150   #PARAMETER FOR RISE AND CRASH SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+gamma5_B=-30   #PARAMETER FOR RISE AND CRASH SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+theta6_B=110   #PARAMETER FOR SURGE AND SURGE SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+gamma6_B=45    #PARAMETER FOR SURGE AND SURGE SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+theta7_B=-100  #PARAMETER FOR CRASH AND SURGE SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+gamma7_B=45    #PARAMETER FOR CRASH AND SURGE SCENARIO(DOWNWARD-FALLING) Table 1(refer main paper)
+sp_B=6         #ARTIICIALLY IMPOSED BREAK POINT
+base_series_B=alp_B+(beta_B*time_index_B)+noise_B         #UPWARD-RISING TIME SERIES
+base_series1_B=alp1_B+(beta1_B*time_index_B)+noise_B      #DOWNWARD-FALLING TIME SERIES
+base_series2_B=alp1_B+(beta2_B*time_index_B)+noise_B
+step_dummy_B=ifelse(time_index_B>sp_B,1,0)                #INTERCEPT DUMMY FOR ARTIFICIAL BREAK INJECTION
+trend_dummy_B=pmax(0,time_index_B-sp_B)                   #SLOPE DUMMY FOR ARTIFICIAL BREAK INJECTION
+###################UPWARD-RISING SERIES WITH ARTIFICIAL STRUCTURAL BREAK INJECTION#############################################
+ar_break3_B=base_series_B+(theta_B*step_dummy_B)+(gamma_B*trend_dummy_B)        #CRASH AND FALL(UPWARD-RISING) refer Table 1
+ar_break4_B=base_series_B+(theta1_B*step_dummy_B)+(gamma1_B*trend_dummy_B)      #CRASH AND SURGE(UPWARD-RISING) refer Table 1
+ar_break5_B=base_series_B+(theta2_B*step_dummy_B)+(gamma2_B*trend_dummy_B)      #SURGE AND SURGE(UPWARD-RISING) refer Table 1
+ar_break6_B=base_series_B+(theta3_B*step_dummy_B)+(gamma3_B*trend_dummy_B)      #RISE AND CRASH(UPWARD-RISING) refer Table 1
+###################DOWNWARD-FALLING SERIES WITH ARTIFICIAL STRUCTURAL BREAK INJECTION###########################################                     
+ar_break7_B=base_series1_B+(theta4_B*step_dummy_B)+(gamma4_B*trend_dummy_B)     #CRASH AND FALL(DOWNWARD-FALLING) refer Table 1
+ar_break8_B=base_series1_B+(theta5_B*step_dummy_B)+(gamma5_B*trend_dummy_B)     #RISE AND CRASH(DOWNWARD-FALLING) refer Table 1
+ar_break9_B=base_series1_B+(theta6_B*step_dummy_B)+(gamma6_B*trend_dummy_B)     #SURGE AND SURGE(DOWNWARD-FALLING) refer Table 1
+ar_break10_B=base_series1_B+(theta7_B*step_dummy_B)+(gamma7_B*trend_dummy_B)    #CRASH AND SURGE(DOWNWARD-FALLING) refer Table 1                 
