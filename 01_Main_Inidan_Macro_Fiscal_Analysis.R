@@ -387,13 +387,50 @@ P.NULL1_U=NULL_BREAK1_U/sum(NULL_BREAK1_U) #UPWARD-RISING NULL BASELINE
 J.SIM_U=sy_t3_B/sum(sy_t3_B) #CRASH AND FALL SCENARIO
 STAT.SIM_U=rbind(J.SIM_U,P.NULL1_U)
 JSD_SIM_U=suppressMessages(JSD(STAT.SIM_U))
-                        
+####################JSD CALCULATION BETWEEN UPWARD RISING NULL BASE LINE AND CRASH AND SURGE SCENARIO###########################                         
 J.SIM1_U=sy_t4_B/sum(sy_t4_B)
 STAT.SIM1_U=rbind(J.SIM1_U,P.NULL1_U)
 JSD_SIM1_U=suppressMessages(JSD(STAT.SIM1_U))
+####################JSD CALCULATION BETWEEN UPWARD RISING NULL BASE LINE AND SURGE AND SURGE SCENARIO###########################                         
 J.SIM2_U=sy_t5_B/sum(sy_t5_B)
 STAT.SIM2_U=rbind(J.SIM2_U,P.NULL1_U)
 JSD_SIM2_U=suppressMessages(JSD(STAT.SIM2_U))
+####################JSD CALCULATION BETWEEN UPWARD RISING NULL BASE LINE AND RISE AND CRASH SCENARIO###########################                          
 J.SIM3_U=sy_t6_B/sum(sy_t6_B)
 STAT.SIM3_U=rbind(J.SIM3_U,P.NULL1_U)
 JSD_SIM3_U=suppressMessages(JSD(STAT.SIM3_U))                        
+######################################DOWNARD-FALLING NULL BASELINE SERIES########################################################
+null_down_D=meboot(base_series2_B,reps = 999)
+null_down_ense_D=null_down_D$ensemble
+null_downZA_D=apply(null_down_ense_D,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)
+nullDOWN_D=( table(factor(null_downZA_D,levels = ALL_I_B)))
+#########JENSEN-SHANNON DIVERGENCE BETWEEN UPWARD-RISING NULL BASELINE AND DOWNWARD-FALLING SERIES WITH ARTIFICIAL BREAK########
+####################JSD CALCULATION BETWEEN DOWNWARD-FALLING NULL BASE LINE AND CRASH AND FALL SCENARIO###########################                     
+P.NULLDOWN_D=nullDOWN_D/sum(nullDOWN_D)
+J.SIM4_D=sy_t7_B/sum(sy_t7_B)
+STAT.SIM4_D=rbind(J.SIM4_D,P.NULLDOWN_D)  
+JSD_SIM4_D=suppressMessages(JSD(STAT.SIM4_D))
+####################JSD CALCULATION BETWEEN DOWNWARD-FALLING NULL BASE LINE AND RISE AND CRASH SCENARIO###########################                    
+J.SIM5_D=sy_t8_B/sum(sy_t8_B)
+STAT.SIM5_D=rbind(J.SIM5_D,P.NULLDOWN_D)
+JSD_SIM5_D=suppressMessages(JSD(STAT.SIM5_D))
+####################JSD CALCULATION BETWEEN DOWNWARD-FALLING NULL BASE LINE AND SURGE AND SURGE SCENARIO###########################                    
+J.SIM6_D=sy_t9_B/sum(sy_t9_B)
+STAT.SIM6_D=rbind(J.SIM6_D,P.NULLDOWN_D)
+JSD_SIM6_D=suppressMessages(JSD(STAT.SIM6_D))
+####################JSD CALCULATION BETWEEN DOWNWARD-FALLING NULL BASE LINE AND CRASH AND SURGE SCENARIO###########################                     
+J.SIM7_D=sy_t10_B/sum(sy_t10_B)
+STAT.SIM7_D=rbind(J.SIM7_D,P.NULLDOWN_D)
+JSD_SIM7_D=suppressMessages(JSD(STAT.SIM7_D))
+#######################################RESULTS FOR QUANTIFYING SENSITIVITY VIA JSD################################################
+print(JSD_SIM_U)   #CRASH AND FALL SCENARIO
+print(JSD_SIM1_U)  #CRASH AND SURGE SCENARIO
+print(JSD_SIM2_U)  # SURGE AND SURGE SCENARIO
+print(JSD_SIM3_U)  #RISE AND CRASH SCENARIO
+print(JSD_SIM4_D)  CRASH AND FALL SCENARIO
+print(JSD_SIM5_D)  #RISE AND CRASH SCENARIO
+print(JSD_SIM6_D)  # SURGE AND SURGE SCENARIO
+print(JSD_SIM7_D)  #CRASH AND SURGE SCENARIO 
+print(nullDOWN_D)  #FRQUENCY DISTRIBUTION OF BREAK-DATE DOWNWARD-FALLING NULL BASE LINE 
+print(NULL_BREAK1_U) ##FRQUENCY DISTRIBUTION OF BREAK-DATE UPWARD-RISING NULL BASELINE SERIES                   
