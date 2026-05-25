@@ -202,7 +202,7 @@ gamma7_B=45    #PARAMETER FOR CRASH AND SURGE SCENARIO(DOWNWARD-FALLING) Table 1
 sp_B=6         #ARTIICIALLY IMPOSED BREAK POINT
 base_series_B=alp_B+(beta_B*time_index_B)+noise_B         #UPWARD-RISING TIME SERIES
 base_series1_B=alp1_B+(beta1_B*time_index_B)+noise_B      #DOWNWARD-FALLING TIME SERIES
-base_series2_B=alp1_B+(beta2_B*time_index_B)+noise_B
+base_series2_B=alp1_B+(beta2_B*time_index_B)+noise_B      ##DOWNARD-FALLING NULL BASELINE SERIES
 step_dummy_B=ifelse(time_index_B>sp_B,1,0)                #INTERCEPT DUMMY FOR ARTIFICIAL BREAK INJECTION
 trend_dummy_B=pmax(0,time_index_B-sp_B)                   #SLOPE DUMMY FOR ARTIFICIAL BREAK INJECTION
 ###################UPWARD-RISING SERIES WITH ARTIFICIAL STRUCTURAL BREAK INJECTION#############################################
@@ -375,7 +375,7 @@ zt1_U=1:Z1_U
 intercept1_U=100
 slope_null1_U=2
 STANDARD_DEV1_U=1
-Y_NULL1_U=intercept1_U+slope_null1_U*zt1_U+rnorm(Z1_U,0,STANDARD_DEV1_U)  #UPWARD-RISING NULL BASELINE SERIES(WITHOUT STR
+Y_NULL1_U=intercept1_U+slope_null1_U*zt1_U+rnorm(Z1_U,0,STANDARD_DEV1_U)  #UPWARD-RISING NULL BASELINE SERIES(WITHOUT BREAK)
 NULL_DATA_PROCESS1_U=meboot(Y_NULL1_U,reps = 999) #MAXIMUM ENTROPY BOOTSTRAP
 NULL_SERIES1_U=NULL_DATA_PROCESS1_U$ensemble
 NULL_ZA_SERIES1_U=apply(NULL_SERIES1_U,2,function(x)
@@ -400,7 +400,7 @@ J.SIM3_U=sy_t6_B/sum(sy_t6_B)
 STAT.SIM3_U=rbind(J.SIM3_U,P.NULL1_U)
 JSD_SIM3_U=suppressMessages(JSD(STAT.SIM3_U))                        
 ######################################DOWNARD-FALLING NULL BASELINE SERIES########################################################
-null_down_D=meboot(base_series2_B,reps = 999)
+null_down_D=meboot(base_series2_B,reps = 999) #refer line 207 of the code.
 null_down_ense_D=null_down_D$ensemble
 null_downZA_D=apply(null_down_ense_D,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
@@ -424,13 +424,13 @@ J.SIM7_D=sy_t10_B/sum(sy_t10_B)
 STAT.SIM7_D=rbind(J.SIM7_D,P.NULLDOWN_D)
 JSD_SIM7_D=suppressMessages(JSD(STAT.SIM7_D))
 #######################################RESULTS FOR QUANTIFYING SENSITIVITY VIA JSD################################################
-print(JSD_SIM_U)   #CRASH AND FALL SCENARIO
-print(JSD_SIM1_U)  #CRASH AND SURGE SCENARIO
-print(JSD_SIM2_U)  # SURGE AND SURGE SCENARIO
-print(JSD_SIM3_U)  #RISE AND CRASH SCENARIO
-print(JSD_SIM4_D)  CRASH AND FALL SCENARIO
-print(JSD_SIM5_D)  #RISE AND CRASH SCENARIO
-print(JSD_SIM6_D)  # SURGE AND SURGE SCENARIO
-print(JSD_SIM7_D)  #CRASH AND SURGE SCENARIO 
-print(nullDOWN_D)  #FRQUENCY DISTRIBUTION OF BREAK-DATE DOWNWARD-FALLING NULL BASE LINE 
-print(NULL_BREAK1_U) ##FRQUENCY DISTRIBUTION OF BREAK-DATE UPWARD-RISING NULL BASELINE SERIES                   
+print(JSD_SIM_U)   #CRASH AND FALL SCENARIO   #Table 6(refer main paper)
+print(JSD_SIM1_U)  #CRASH AND SURGE SCENARIO  #Table 6(refer main paper)
+print(JSD_SIM2_U)  # SURGE AND SURGE SCENARIO #Table 6(refer main paper)
+print(JSD_SIM3_U)  #RISE AND CRASH SCENARIO   #Table 6(refer main paper)
+print(JSD_SIM4_D)  #CRASH AND FALL SCENARIO   #Table 6(refer main paper)
+print(JSD_SIM5_D)  #RISE AND CRASH SCENARIO   #Table 6(refer main paper)
+print(JSD_SIM6_D)  # SURGE AND SURGE SCENARIO #Table 6(refer main paper)
+print(JSD_SIM7_D)  #CRASH AND SURGE SCENARIO  #Table 6(refer main paper)
+print(nullDOWN_D)  #FRQUENCY DISTRIBUTION OF BREAK-DATE DOWNWARD-FALLING NULL BASE LINE #Figure 3(refer main paper)
+print(NULL_BREAK1_U) ##FRQUENCY DISTRIBUTION OF BREAK-DATE UPWARD-RISING NULL BASELINE SERIES #Figure 2(refer main paper)                    
