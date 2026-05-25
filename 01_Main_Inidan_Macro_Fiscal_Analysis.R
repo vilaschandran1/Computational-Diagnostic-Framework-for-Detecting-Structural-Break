@@ -294,7 +294,7 @@ sy_t5_1_I=(table(factor(syn_b5_1za_I,levels = ALL_I_B)))
 syn_b6_1_I=meboot(ar_break6_B,reps=999) #INDEPENDENT RUN OF ALGORITHM ON RISE AND CRASH SCENARIO (UPWARD-RISING)  
 syn_b6_1ense_I=syn_b6_1_I$ensemble
 syn_b6_1za_I=apply(syn_b6_1ense_I,2,function(x)
-  ur.za(x,model="both",lag = 1)@bpoint  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
+  ur.za(x,model="both",lag = 1)@bpoint)  #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 sy_t6_1_I=(table(factor(syn_b6_1za_I,levels = ALL_I_B)))
 syn_b7_1_I=meboot(ar_break7_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON CRASH AND FALL(DOWNWARD-FALLING)
 syn_b7_1ense_I=syn_b7_1_I$ensemble
