@@ -1,6 +1,12 @@
 #######################################################################################################################################
 ##############################################THRESHOLD SIMULATION#####################################################################
 ##############WARNING-THRESHOLD SIMULATION COMPUTATIONALLY INTENSIVE REQUIRE CONTNUOUS 25+ HOUR COMPUTATION IN STANDARD PC#############
+if(!require("urca")) install.packages("urca")
+if(!require("meboot")) install.packages("meboot")
+if(!require("philentropy")) install.packages("philentropy")
+library(urca)
+library(meboot)
+library(philentropy)
 iteration=100
 mc_thresholds_snr <- numeric(iteration)
 mc_thresholds_ds <- numeric(iteration)
