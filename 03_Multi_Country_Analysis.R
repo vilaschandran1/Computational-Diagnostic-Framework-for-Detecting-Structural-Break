@@ -213,7 +213,7 @@ GDP_JAPANENSE=GDP_JAPANBOOT$ensemble
 GDP_JAPAN_ZA=apply(GDP_JAPANENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_JAPANBREAK=table(factor(GDP_JAPAN_ZA,levels = ALL_INDICES))
-Dominace_Share_japan=((max(GDP_JAPANBREAK))/999)*100
+Dominance_Share_japan=((max(GDP_JAPANBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(JAPAN)#####################################
 GDP_JAPAN_I=meboot(GDP_JAPAN,reps = 999) #maximum entropy bootstrap
@@ -237,7 +237,7 @@ GDP_AUSTRALIAENSE=GDP_AUSTRALIABOOT$ensemble
 GDP_AUSTRALIA_ZA=apply(GDP_AUSTRALIAENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_AUSTRALIABREAK=table(factor(GDP_AUSTRALIA_ZA,levels = ALL_INDICES))
-Dominace_Share_AUSTRALIA=((max(GDP_AUSTRALIABREAK))/999)*100
+Dominance_Share_AUSTRALIA=((max(GDP_AUSTRALIABREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Auatralia)#####################################
 GDP_AUSTRALIA_I=meboot(GDP_AUSTRALIA,reps = 999) #maximum entropy bootstrap
@@ -261,7 +261,7 @@ GDP_KOREAENSE=GDP_KOREABOOT$ensemble
 GDP_KOREA_ZA=apply(GDP_KOREAENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_KOREABREAK=table(factor(GDP_KOREA_ZA,levels = ALL_INDICES))
-Dominace_Share_KOREA=((max(GDP_KOREABREAK))/999)*100
+Dominance_Share_KOREA=((max(GDP_KOREABREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(South Korea)#####################################
 GDP_KOREA_I=meboot(GDP_KOREA,reps = 999) #maximum entropy bootstrap
@@ -285,7 +285,7 @@ GDP_SWISSENSE=GDP_SWISSBOOT$ensemble
 GDP_SWISS_ZA=apply(GDP_SWISSENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_SWISSBREAK=table(factor(GDP_SWISS_ZA,levels = ALL_INDICES))
-Dominace_Share_SWISS=((max(GDP_SWISSBREAK))/999)*100
+Dominance_Share_SWISS=((max(GDP_SWISSBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Swithzerland)#####################################
 GDP_SWISS_I=meboot(GDP_SWISS,reps = 999) #maximum entropy bootstrap
@@ -309,7 +309,7 @@ GDP_SINGENSE=GDP_SINGBOOT$ensemble
 GDP_SING_ZA=apply(GDP_SINGENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_SINGBREAK=table(factor(GDP_SING_ZA,levels = ALL_INDICES))
-Dominace_Share_SINGAPORE=((max(GDP_SINGBREAK))/999)*100
+Dominance_Share_SINGAPORE=((max(GDP_SINGBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(SINGAPORE)#####################################
 GDP_SING_I=meboot(GDP_SINGAPORE,reps = 999) #maximum entropy bootstrap
@@ -333,7 +333,7 @@ GDP_ARENSE=GDP_ARBOOT$ensemble
 GDP_AR_ZA=apply(GDP_ARENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_ARBREAK=table(factor(GDP_AR_ZA,levels = ALL_INDICES))
-Dominace_Share_ARGENTINA=((max(GDP_ARBREAK))/999)*100
+Dominance_Share_ARGENTINA=((max(GDP_ARBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Argentina)#####################################
 GDP_AR_I=meboot(GDP_AR,reps = 999) #maximum entropy bootstrap
@@ -357,7 +357,7 @@ GDP_TURKENSE=GDP_TURKBOOT$ensemble
 GDP_TURK_ZA=apply(GDP_TURKENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_TURKBREAK=table(factor(GDP_TURK_ZA,levels = ALL_INDICES))
-Dominace_Share_TURKEY=((max(GDP_TURKBREAK))/999)*100
+Dominance_Share_TURKEY=((max(GDP_TURKBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Turkey)#####################################
 GDP_TURK_I=meboot(GDP_TURKEY,reps = 999) #maximum entropy bootstrap
@@ -381,7 +381,7 @@ GDP_VIETENSE=GDP_VIETBOOT$ensemble
 GDP_VIET_ZA=apply(GDP_VIETENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_VIETBREAK=table(factor(GDP_VIET_ZA,levels = ALL_INDICES))
-Dominace_Share_Vietnam=((max(GDP_VIETBREAK))/999)*100
+Dominance_Share_Vietnam=((max(GDP_VIETBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Vietnam)#####################################
 GDP_VIET_I=meboot(GDP_VIETNAM,reps = 999) #maximum entropy bootstrap
@@ -405,7 +405,7 @@ GDP_BRAZILENSE=GDP_BRAZILBOOT$ensemble
 GDP_BRAZIL_ZA=apply(GDP_BRAZILENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_BRAZILBREAK=table(factor(GDP_BRAZIL_ZA,levels = ALL_INDICES))
-Dominace_Share_BRAZIL=((max(GDP_BRAZILBREAK))/999)*100
+Dominance_Share_BRAZIL=((max(GDP_BRAZILBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Brazil)#####################################
 GDP_BRAZIL_I=meboot(GDP_BRAZIL,reps = 999) #maximum entropy bootstrap
@@ -453,7 +453,7 @@ GDP_SAENSE=GDP_SABOOT$ensemble
 GDP_SA_ZA=apply(GDP_SAENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_SABREAK=table(factor(GDP_SA_ZA,levels = ALL_INDICES))
-Dominace_Share_SouthAfrica=((max(GDP_SABREAK))/999)*100
+Dominance_Share_SouthAfrica=((max(GDP_SABREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(South Africa)#####################################
 GDP_SA_I=meboot(GDP_SOUTHAFRICA,reps = 999) #maximum entropy bootstrap
@@ -477,7 +477,7 @@ GDP_INDONENSE=GDP_INDONBOOT$ensemble
 GDP_INDON_ZA=apply(GDP_INDONENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_INDONBREAK=table(factor(GDP_INDON_ZA,levels = ALL_INDICES))
-Dominace_Share_Indonesia=((max(GDP_INDONBREAK))/999)*100
+Dominance_Share_Indonesia=((max(GDP_INDONBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Indonesia)#####################################
 GDP_INDON_I=meboot(GDP_INDONESIA,reps = 999) #maximum entropy bootstrap
@@ -501,7 +501,7 @@ GDP_EGYPTENSE=GDP_EGYPTBOOT$ensemble
 GDP_EGYPT_ZA=apply(GDP_EGYPTENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_EGYPTBREAK=table(factor(GDP_EGYPT_ZA,levels = ALL_INDICES))
-Dominace_Share_Egypt=((max(GDP_EGYPTBREAK))/999)*100
+Dominance_Share_Egypt=((max(GDP_EGYPTBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(EGYPT)#####################################
 GDP_EGYPT_I=meboot(GDP_EGYPT,reps = 999) #maximum entropy bootstrap
@@ -525,7 +525,7 @@ GDP_RUSSIAENSE=GDP_RUSSIABOOT$ensemble
 GDP_RUSSIA_ZA=apply(GDP_RUSSIAENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_RUSSIABREAK=table(factor(GDP_RUSSIA_ZA,levels = ALL_INDICES))
-Dominace_Share_RUSSIA=((max(GDP_RUSSIABREAK))/999)*100
+Dominance_Share_RUSSIA=((max(GDP_RUSSIABREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(RUSSIA)#####################################
 GDP_RUSSIA_I=meboot(GDP_RUSSIA,reps = 999) #maximum entropy bootstrap
@@ -549,7 +549,7 @@ GDP_CHINAENSE=GDP_CHINABOOT$ensemble
 GDP_CHINA_ZA=apply(GDP_CHINAENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_CHINABREAK=table(factor(GDP_CHINA_ZA,levels = ALL_INDICES))
-Dominace_Share_CHINA=((max(GDP_CHINABREAK))/999)*100
+Dominance_Share_CHINA=((max(GDP_CHINABREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(China)#####################################
 GDP_CHINA_I=meboot(GDP_CHINA,reps = 999) #maximum entropy bootstrap
@@ -589,62 +589,62 @@ print(Dominance_Share_Canada)
 print(GDP_CANABREAK)
 print(GDP_SNR_CANA)
 print("---------------------------------japan--------------")
-print(Dominace_Share_japan)
+print(Dominance_Share_japan)
 print(GDP_JAPANBREAK)
 print(GDP_SNR_JAPAN)
 print("----------------AUSTRALIA-------------------------")
-print(Dominace_Share_AUSTRALIA)
+print(Dominance_Share_AUSTRALIA)
 print(GDP_AUSTRALIABREAK)
 print(GDP_SNR_AUSTRALIA)
 print("--------------------South Korea--------------------")
-print(Dominace_Share_KOREA)
+print(Dominance_Share_KOREA)
 print(GDP_KOREABREAK)
 print(GDP_SNR_KOREA)
 print("--------------Swithzerland--------------------------")
-print(Dominace_Share_SWISS)
+print(Dominance_Share_SWISS)
 print(GDP_SWISSBREAK)
 print(GDP_SNR_SWISS)
 print("-------------------Singapore--------------------------")
-print(Dominace_Share_SINGAPORE)
+print(Dominance_Share_SINGAPORE)
 print(GDP_SINGBREAK)
 print(GDP_SNR_SING)
 print("--------------------Argentina--------------------------")
-print(Dominace_Share_ARGENTINA)
+print(Dominance_Share_ARGENTINA)
 print(GDP_ARBREAK)
 print(GDP_SNR_AR)
 print("-------------------Turkey----------------------------------")
-print(Dominace_Share_TURKEY)
+print(Dominance_Share_TURKEY)
 print(GDP_TURKBREAK)
 print(GDP_SNR_TURK)
 print("-----------------------vietnam---------------------------")
-print(Dominace_Share_Vietnam)
+print(Dominance_Share_Vietnam)
 print(GDP_VIETBREAK)
 print(GDP_SNR_VIET)
 print("---------------------BRAZIL-------------------------------")
-print(Dominace_Share_BRAZIL)
+print(Dominance_Share_BRAZIL)
 print(GDP_BRAZILBREAK)
 print(GDP_SNR_BRAZIL)
 print("--------------------Mexico---------------------------------")
-print(Dominace_Share_MEXICO)
+print(Dominance_Share_MEXICO)
 print(GDP_MEXICOBREAK)
 print(GDP_SNR_MEXICO)
 print("-----------------------SOUTH AFRICA-------------------------")
-print(Dominace_Share_SouthAfrica)
+print(Dominance_Share_SouthAfrica)
 print(GDP_SABREAK)
 print(GDP_SNR_SA)
 print("----------------------Indonesia-----------------------------")
-print(Dominace_Share_Indonesia)
+print(Dominance_Share_Indonesia)
 print(GDP_INDONBREAK)
 print(GDP_SNR_INDON)
 print("-------------------Egypt-------------------------------------")
-print(Dominace_Share_Egypt)
+print(Dominance_Share_Egypt)
 print(GDP_EGYPTBREAK)
 print(GDP_SNR_EGYPT)
 print("------------------RUSSIA------------------------------------")
-print(Dominace_Share_RUSSIA)
+print(Dominance_Share_RUSSIA)
 print(GDP_RUSSIABREAK)
 print(GDP_SNR_RUSSIA)
 print("----------------------------------CHINA--------------------------")
-print(Dominace_Share_CHINA)
+print(Dominance_Share_CHINA)
 print(GDP_CHINABREAK)
 print(GDP_SNR_CHINA)
