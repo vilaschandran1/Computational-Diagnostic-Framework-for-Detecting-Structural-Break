@@ -71,6 +71,21 @@ GDP_RUSSIA=data_RUSSIA$NY.GDP.MKTP.KN
 data_CHINA=subset(data.app,country=="China")
 data_CHINA=data_CHINA[order(data_CHINA$year),]
 GDP_CHINA=data_CHINA$NY.GDP.MKTP.KN
+##########################################################################################
+##########################NULL GENERATION################################################
+ALL_INDICES=1:14
+Z=14
+zt=1:Z
+intercept=100
+slope_null=2
+STANDARD_DEV=1
+Y_NULL=intercept+slope_null*zt+rnorm(Z,0,STANDARD_DEV)
+NULL_DATA_PROCESS=meboot(Y_NULL,reps = 999)
+NULL_SERIES=NULL_DATA_PROCESS$ensemble
+NULL_ZA_SERIES=apply(NULL_SERIES,2,function(x)
+  ur.za(x,model = "both",lag = 1)@bpoint)
+NULL_BREAK=table(factor(NULL_ZA_SERIES,levels = ALL_INDICES))
+P.NULL=NULL_BREAK/sum(NULL_BREAK)                     
 #########################################################################################
 ####################################United States#######################################
 GDP_USBOOT=meboot(GDP_US,reps = 999)  #maximum entropy bootstrap
