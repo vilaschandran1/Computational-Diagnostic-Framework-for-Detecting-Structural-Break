@@ -1,4 +1,3 @@
-set.seed(139)
 if(!require("urca")) install.packages("urca")
 if(!require("meboot")) install.packages("meboot")
 if(!require("philentropy")) install.packages("philentropy")
@@ -7,6 +6,7 @@ library(meboot)
 library(urca)
 library(philentropy)
 library(WDI)
+set.seed(139)
 ##########################################################################################################################################################
 ###############################DATA##################################################################################################
 data.app=WDI(indicator ="NY.GDP.MKTP.KN", country = c('US','GB','DE','FR','CA','JP','AU','KR','CH','SG','AR','TR','VN','BR','MX','ZA','ID','EG','RU','CN'),
@@ -429,7 +429,7 @@ GDP_MEXICOENSE=GDP_MEXICOBOOT$ensemble
 GDP_MEXICO_ZA=apply(GDP_MEXICOENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)
 GDP_MEXICOBREAK=table(factor(GDP_MEXICO_ZA,levels = ALL_INDICES))
-Dominace_Share_MEXICO=((max(GDP_MEXICOBREAK))/999)*100
+Dominance_Share_MEXICO=((max(GDP_MEXICOBREAK))/999)*100
 ########################################################################################
 ###############################Noise Base(Mexico)#####################################
 GDP_MEXICO_I=meboot(GDP_MEXICO,reps = 999) #maximum entropy bootstrap
