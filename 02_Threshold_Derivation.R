@@ -85,7 +85,7 @@ ar_break7=base_series1+(theta4*step_dummy)+(gamma4*trend_dummy)   #CRASH AND FAL
 ar_break8=base_series1+(theta5*step_dummy)+(gamma5*trend_dummy)   #RISE AND CRASH(DOWNWARD-FALLING)
 ar_break9=base_series1+(theta6*step_dummy)+(gamma6*trend_dummy)   #SURGE AND SURGE(DOWNWARD-FALLING)
 ar_break10=base_series1+(theta7*step_dummy)+(gamma7*trend_dummy)  #CRASH AND SURGE(DOWNWARD-FALLING)
-#######APPLICATION OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP ON STRUCTURAL BREAK SCENARIOS#####################################
+#######APPLICATION OF ENSEMBLE BREAK DIAGNOSTIC (EBD) ON STRUCTURAL BREAK SCENARIOS#####################################
 ############################ #CRASH AND FALL(UPWARD-RISING)#####################################################################  
 syn_b3=meboot(ar_break3,reps=999)    
 syn_b3ense=syn_b3$ensemble
