@@ -52,25 +52,25 @@ print(repl_breakCE) #Figure 1(refer main paper)
 print(repl_breakTE) #Figure 1(refer main paper)                
 ####################################################################################################################################
 ######################################ALGORITHMIC STABILITY DIAGNOSTIC##############################################################
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL GDP#############################################
+#########INDEPENDENT RUN OF ENSEMBLE BREAK DIAGNOSTIC (EBD) REAL GDP#############################################
 inde_GDP=meboot(GDP_REAL,reps = 999)  #independent run of algorithm for Real GDP
 inde_GDPENSE=inde_GDP$ensemble
 inde_za_gdp=apply(inde_GDPENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C
 inde_breakGDP=table(factor(inde_za_gdp,levels = ALL_INDICES))                 
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL REVENUE EXPENDITURE###############################
+#########INDEPENDENT RUN OF ENSEMBLE BREAK DIAGNOSTIC (EBD) REVENUE EXPENDITURE###############################
 inde_RE=meboot(RE_REAL,reps = 999)   #independent run of algorithm real revenue expenditure
 inde_REENSE=inde_RE$ensemble
 inde_za_re=apply(inde_REENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C  
 inde_breakRE=table(factor(inde_za_re,levels = ALL_INDICES))
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL CAPITAL EXPENDITURE###############################
+#########INDEPENDENT RUN OF ENSEMBLE BREAK DIAGNOSTIC (EBD)   REAL CAPITAL EXPENDITURE###############################
 inde_CE=meboot(CE_REAL,reps = 999)   #independent run of algorithm capital expenditure
 inde_CEENSE=inde_CE$ensemble
 inde_za_ce=apply(inde_CEENSE,2,function(x)
   ur.za(x,model = "both",lag = 1)@bpoint)        #APPLICATION ZIVOT-ANDREWS UNIT ROOT TEST MODEL C  
 inde_breakCE=table(factor(inde_za_ce,levels = ALL_INDICES))                 
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK REAL TOTAL EXPENDITURE###############################
+#########INDEPENDENT RUN OF ENSEMBLE BREAK DIAGNOSTIC (EBD)  REAL TOTAL EXPENDITURE###############################
 inde_TE=meboot(TE_REAL,reps = 999)    #independent run of algorithm total expenditure
 inde_TEENSE=inde_TE$ensemble
 inde_za_te=apply(inde_TEENSE,2,function(x)
@@ -115,7 +115,7 @@ intercept=100    #INTERCEPT
 slope_null=2     #SLOPE
 STANDARD_DEV=1
 Y_NULL=intercept+slope_null*zt+rnorm(Z,0,STANDARD_DEV)    #NULL PLACEBO SERIES GENERATION(REFER SECTION 4.4)
-#############APPLICATION OF MAXIMUM ENTROPY BOOTSTRAP ON NULL-PLACEBO SERIES##################################################                 
+#############ENSEMBLE BREAK DIAGNOSTIC (EBD) ON NULL-PLACEBO SERIES##################################################                 
 NULL_DATA_PROCESS=meboot(Y_NULL,reps = 999)    #MAXIMUM ENTROPY BOOTSTRAP NULL PLACEBO SERIES
 NULL_SERIES=NULL_DATA_PROCESS$ensemble
 ####APPLICATION OF ZIVOT-ANDREWS UNIT ROOT TEST ON GENERATED 999 PLAUSIBLE SERIES FOR NULL PLACEBO SERIES#####################                  
@@ -213,7 +213,7 @@ ar_break7_B=base_series1_B+(theta4_B*step_dummy_B)+(gamma4_B*trend_dummy_B)     
 ar_break8_B=base_series1_B+(theta5_B*step_dummy_B)+(gamma5_B*trend_dummy_B)     #RISE AND CRASH(DOWNWARD-FALLING) refer Table 1
 ar_break9_B=base_series1_B+(theta6_B*step_dummy_B)+(gamma6_B*trend_dummy_B)     #SURGE AND SURGE(DOWNWARD-FALLING) refer Table 1
 ar_break10_B=base_series1_B+(theta7_B*step_dummy_B)+(gamma7_B*trend_dummy_B)    #CRASH AND SURGE(DOWNWARD-FALLING) refer Table 1                 
-#######APPLICATION OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP ON STRUCTURAL BREAK SCENARIOS#####################################
+#######APPLICATION OF ENSEMBLE BREAK DIAGNOSTIC (EBD) ON STRUCTURAL BREAK SCENARIOS#####################################
 ############################ #CRASH AND FALL(UPWARD-RISING)#####################################################################                     
 syn_b3_B=meboot(ar_break3_B,reps=999) #APLLICATION OF MAXIMUM ENTROPY BOOTSTRAP
 syn_b3ense_B=syn_b3_B$ensemble
@@ -273,7 +273,7 @@ print(sy_t9_B)  #SURGE AND SURGE(DOWNWARD-FALLING),FIGURE 3(refer main paper)
 print(sy_t10_B) #CRASH AND SURGE(DOWNWARD-FALLING),FIGURE 3(refer main paper)
 ################################################################################################################################                  
 ########ALGORITHMIC STABILITY OF SYNTHETIC SERIES WITH STRUCTURAL BREAK######################################################### 
-#########INDEPENDENT RUN OF ZIVOT-ANDREWS MAXIMUM ENTROPY BOOTSTRAP FRAMEWORK ##################################################                  
+#########INDEPENDENT RUN OF ENSEMBLE BREAK DIAGNOSTIC (EBD) ##################################################                  
 syn_b3_1_I=meboot(ar_break3_B,reps=999)  #INDEPENDENT RUN OF ALGORITHM ON CRASH AND FALL SCENARIO (UPWARD-RISING)
 syn_b3_1ense_I=syn_b3_1_I$ensemble
 syn_b3_1za_I=apply(syn_b3_1ense_I,2,function(x)
